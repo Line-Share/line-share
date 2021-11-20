@@ -1,4 +1,4 @@
-import React, {useRef, useState, useEffect} from 'react'
+import React, {useRef, useState, useEffect, useCallback} from 'react'
 import { CleanPlugin } from 'webpack';
 const colors = [
     "black",
@@ -18,27 +18,42 @@ const Canvas = ({width}, {height}) =>{
     const canvasRef = useRef(null);
     const ctx = useRef(null);
     const [selectedColor, setSelectedColor] = useState(colors[0]); 
+    const [selectedWidth, setSelectedWidth] = useState(widths[0]);
+    const [mouseDown, setMouseDown] = useState(false);
+    const [lastPosition, setPosition] = useState({
+        x: 0,
+        y: 0
+    })
     
-    
-    const draw = (x, y) => {
+    const draw = useCallback((x, y) => {
         if (onMouseDown){
             ctx.current.beginPath();
             ctx.current.strokStyle = selectedColor;
-            ctx.current.lineWidth = 10;
+            ctx.current.lineWidth = selectedWidth;
             ctx.current.lineJoin = 'round';
+            ctx.current.moveTo(lastPosition.x, lastPosition.y);
+            ctx.current.lineTo(x, y);
+            ctx.current.closePath();
+            ctx.current.stroke(); 
+
+            setPosition({
+                x, 
+                y
+            })
 
         }
-    }
+    }, [lastPosition, mouseDown, setSelectedColor, selectedWidth, setPosition])
+   
     useEffect(()=> {
         if (canvasRef.current){
             ctx.current = canvasRef.current.getContext('2d');
         }
-    }, [])
+    }, []) 
      
-    return 
-    (<div>
-        
-        
+
+
+    return  (
+    <div>
         
         <canvas 
         id = 'myCanvas' 
@@ -50,12 +65,8 @@ const Canvas = ({width}, {height}) =>{
         onMouseDown = {onMouseDown}
         onMouseUp = {onMouseUp}
         onMouseLeave = {onMouseLeave}
-
-
         />
-        
         <br/>
-        
         
         <select 
         value = {selectedColor} 
@@ -63,6 +74,15 @@ const Canvas = ({width}, {height}) =>{
         setSelectedColor(e.target.value)}>
         colors.map(
             color = <option value ={color}>{color}</option>
+        ) 
+        </select>
+
+        <select 
+        value = {selectedWidth} 
+        onChange = {(e) => 
+        setSelectedWidth(e.target.value)}>
+        widths.map(
+            width = <option value ={width}>{width}</option>
         ) 
         </select>
         
@@ -78,3 +98,4 @@ const Canvas = ({width}, {height}) =>{
 }
 
 export default Canvas;
+
