@@ -34,7 +34,7 @@ const Canvas = ({width}, {height}) =>{
     const draw = useCallback((x, y) => {
         if (onMouseDown){
             ctx.current.beginPath();
-            ctx.current.strokStyle = selectedColor;
+            ctx.current.strokeStyle = selectedColor;
             ctx.current.lineWidth = selectedWidth;
             ctx.current.lineJoin = 'round';
             ctx.current.moveTo(lastPosition.x, lastPosition.y);
