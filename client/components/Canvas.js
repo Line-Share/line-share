@@ -24,6 +24,12 @@ const Canvas = ({width}, {height}) =>{
         x: 0,
         y: 0
     })
+
+    useEffect(()=> {
+        if (canvasRef.current){
+            ctx.current = canvasRef.current.getContext('2d');
+        }
+    }, []) 
     
     const draw = useCallback((x, y) => {
         if (onMouseDown){
@@ -43,15 +49,32 @@ const Canvas = ({width}, {height}) =>{
 
         }
     }, [lastPosition, mouseDown, setSelectedColor, selectedWidth, setPosition])
+
+    const onMouseDown = (e) =>
+    {
+        setPosition({
+            x: e.pageX,
+            y: e.PageY
+        })
+        setMouseDown(true);
+    }
+
+    const onMouseUp = (e) =>
+    {
+        setMouseDown(false);
+    }
+    const onMouseLeave = (e) =>
+    {
+        setMouseDown(false);
+    }
+    
+    console.log(mouseDown, lastPosition);
+
+    const onMouseMove = (e) => {
+        draw(e.pageX, e.pageY);
+    }
    
-    useEffect(()=> {
-        if (canvasRef.current){
-            ctx.current = canvasRef.current.getContext('2d');
-        }
-    }, []) 
-     
-
-
+    
     return  (
     <div>
         
