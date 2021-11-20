@@ -1,12 +1,10 @@
 const router = require('express').Router();
-const {models: { User }} = require('../db')
+const {models: { Post }} = require('../db')
 
 router.get('/', async (req, res, next) => {
   try {
-    const allUsers = await User.findAll({
-      attributes: ['id', 'username']
-    });
-    res.send(allUsers);
+    const allPosts = await Post.findAll();
+    res.send(allPosts);
   } catch (error) {
     next(error);
   }
