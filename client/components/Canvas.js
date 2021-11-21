@@ -1,9 +1,10 @@
-import React, {useRef, useState, useEffect, useCallback} from 'react'
-import { CleanPlugin } from 'webpack';
+import React from 'react'
+import {useRef, useState, useEffect, useCallback} from 'react'
+// import { CleanPlugin } from 'webpack';
 const colors = [
     "black",
-    "red", 
-    "blue", 
+    "red",
+    "blue",
     "green",
     "yellow",
     "orange",
@@ -17,7 +18,7 @@ const widths = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
 const Canvas = ({width}, {height}) =>{
     const canvasRef = useRef(null);
     const ctx = useRef(null);
-    const [selectedColor, setSelectedColor] = useState(colors[0]); 
+    const [selectedColor, setSelectedColor] = useState(colors[0]);
     const [selectedWidth, setSelectedWidth] = useState(widths[0]);
     const [mouseDown, setMouseDown] = useState(false);
     const [lastPosition, setPosition] = useState({
@@ -29,8 +30,8 @@ const Canvas = ({width}, {height}) =>{
         if (canvasRef.current){
             ctx.current = canvasRef.current.getContext('2d');
         }
-    }, []) 
-    
+    }, [])
+
     const draw = useCallback((x, y) => {
         if (onMouseDown){
             ctx.current.beginPath();
@@ -40,10 +41,10 @@ const Canvas = ({width}, {height}) =>{
             ctx.current.moveTo(lastPosition.x, lastPosition.y);
             ctx.current.lineTo(x, y);
             ctx.current.closePath();
-            ctx.current.stroke(); 
+            ctx.current.stroke();
 
             setPosition({
-                x, 
+                x,
                 y
             })
 
@@ -67,49 +68,49 @@ const Canvas = ({width}, {height}) =>{
     {
         setMouseDown(false);
     }
-    
+
     console.log(mouseDown, lastPosition);
 
     const onMouseMove = (e) => {
         draw(e.pageX, e.pageY);
     }
-   
-    
+
+
     return  (
     <div>
-        
-        <canvas 
-        id = 'myCanvas' 
-        style = {{border: '1px solid #000'}} 
-        width = {600} 
-        height = {360} 
+
+        <canvas
+        id = 'myCanvas'
+        style = {{border: '1px solid #000'}}
+        width = {600}
+        height = {360}
         ref = {canvasRef}
-        onMouseMove = {onMouseMove} 
+        onMouseMove = {onMouseMove}
         onMouseDown = {onMouseDown}
         onMouseUp = {onMouseUp}
         onMouseLeave = {onMouseLeave}
         />
         <br/>
-        
-        <select 
-        value = {selectedColor} 
-        onChange = {(e) => 
+
+        <select
+        value = {selectedColor}
+        onChange = {(e) =>
         setSelectedColor(e.target.value)}>
-        colors.map(
-            color = <option value ={color}>{color}</option>
-        ) 
+        {colors.map(
+            (color) => <option key={color} value ={color}>{color}</option>
+        )}
         </select>
 
-        <select 
-        value = {selectedWidth} 
-        onChange = {(e) => 
+        <select
+        value = {selectedWidth}
+        onChange = {(e) =>
         setSelectedWidth(e.target.value)}>
-        widths.map(
-            width = <option value ={width}>{width}</option>
-        ) 
+        {widths.map(
+            (width) => <option key={width} value ={width}>{width}</option>
+        )}
         </select>
-        
-        
+
+
         <button>Clear</button>
         <button>Post</button>
         <button>Save to Drafts</button>
