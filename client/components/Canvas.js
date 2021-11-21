@@ -1,5 +1,4 @@
 import React, {useRef, useState, useEffect, useCallback} from 'react'
-import ColorWheel from './ColorWheel';
 
 const colors = [
     "black",
@@ -10,12 +9,17 @@ const colors = [
     "orange",
     "brown",
     "pink",
-    "purple"
+    "purple",
+    "magenta",
+    "maroon",
+    "cyan",
+    "turquoise",
+    "indigo"
 ]
 
 const widths = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
 
-const Canvas = () =>{
+const Canvas = () =>{ 
     const canvasRef = useRef(null);
     const ctx = useRef(null);
     const [selectedColor, setSelectedColor] = useState(colors[0]);
@@ -55,7 +59,7 @@ const Canvas = () =>{
     {
         setPosition({
             x: e.pageX,
-            y: e.PageY
+            y: e.pageY
         })
         setMouseDown(true);
     }
@@ -77,13 +81,12 @@ const Canvas = () =>{
    
     
     return  (
-    <div>
+    <div className = "layout">
         
-        <canvas 
-        id = 'myCanvas' 
+        <canvas  
         style = {{border: '2px solid #000'}} 
-        width = {1000} 
-        height = {600} 
+        width = {900} 
+        height = {900} 
         ref = {canvasRef}
         onMouseDown = {onMouseDown}
         onMouseUp = {onMouseUp}
