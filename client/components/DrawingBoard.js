@@ -7,11 +7,8 @@ import Canvas from './Canvas';
 function DrawingBoard(){
     return(
         <div className = 'container' style = {{textAlign: "center"}}>
-            <>
-            <Header title = 'Line Share'/>
+            {/* <Header title = 'Line Share'/> */}
             <Canvas/>
-        
-            </>
         </div>
     )
 }

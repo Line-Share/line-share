@@ -27,9 +27,13 @@ const Canvas = () =>{
     })
 
     useEffect(()=> {
-        if (canvasRef.current){
-            ctx.current = canvasRef.current.getContext('2d');
-        }
+        const canvas = canvasRef.current;
+        canvas.width = window.innerWidth * 2;
+        canvas.height = window.innerHeight * 2;
+        canvas.style.width = `${window.innerWidth}px`;
+        canvas.style.height = `${window.innerHeight}px`;
+        ctx.current = canvasRef.current.getContext('2d');
+        ctx.current.scale(2, 2);
     }, [])
 
     const draw = useCallback((x, y) => {
@@ -74,16 +78,16 @@ const Canvas = () =>{
     const clear = () => {
         ctx.current.clearRect(0,0, ctx.current.canvas.width, ctx.current.canvas.height);
     }
-   
-    
+
+
     return  (
     <div>
-        
-        <canvas 
-        id = 'myCanvas' 
-        style = {{border: '2px solid #000'}} 
-        width = {1000} 
-        height = {600} 
+
+        <canvas
+        id = 'myCanvas'
+        style = {{border: '2px solid #000'}}
+        // width = {400}
+        // height = {400}
         ref = {canvasRef}
         onMouseDown = {onMouseDown}
         onMouseUp = {onMouseUp}
@@ -109,12 +113,12 @@ const Canvas = () =>{
             (width) => <option key={width} value ={width}>{width}</option>
         )}
         </select>
-        
-        
+
+
         <button onClick = {clear}>Clear</button>
         <br/>
-        
-    
+
+
 
 
     </div>
