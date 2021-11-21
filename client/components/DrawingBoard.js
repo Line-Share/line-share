@@ -8,7 +8,7 @@ function DrawingBoard(){
         <div className = 'container'>
             <> 
             <Header title = 'Line Share'/>
-            <Canvas width = {600} height = {300}/>
+            <Canvas pageWidth = {600} pageHeight = {300}/>
         
             </>
         </div>

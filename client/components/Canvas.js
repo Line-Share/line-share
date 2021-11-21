@@ -1,4 +1,5 @@
 import React, {useRef, useState, useEffect, useCallback} from 'react'
+import ColorWheel from './ColorWheel';
 import { CleanPlugin } from 'webpack';
 const colors = [
     "black",
@@ -14,7 +15,7 @@ const colors = [
 
 const widths = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
 
-const Canvas = ({width}, {height}) =>{
+const Canvas = ({pageWidth}, {pageHeight}) =>{
     const canvasRef = useRef(null);
     const ctx = useRef(null);
     const [selectedColor, setSelectedColor] = useState(colors[0]); 
@@ -73,6 +74,10 @@ const Canvas = ({width}, {height}) =>{
     const onMouseMove = (e) => {
         draw(e.pageX, e.pageY);
     }
+
+    const clear = () => {
+        ctx.current.clearRect(0,0, ctx.current.canvas.width, ctx.current.canvas.height);
+    }
    
     
     return  (
@@ -81,8 +86,8 @@ const Canvas = ({width}, {height}) =>{
         <canvas 
         id = 'myCanvas' 
         style = {{border: '1px solid #000'}} 
-        width = {600} 
-        height = {360} 
+        width = {pageWidth} 
+        height = {pageHeight} 
         ref = {canvasRef}
         onMouseMove = {onMouseMove} 
         onMouseDown = {onMouseDown}
@@ -110,9 +115,10 @@ const Canvas = ({width}, {height}) =>{
         </select>
         
         
-        <button>Clear</button>
-        <button>Post</button>
-        <button>Save to Drafts</button>
+        <button onClick = {clear}>Clear</button>
+        <br/>
+        
+    
 
 
     </div>
