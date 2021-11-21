@@ -74,16 +74,6 @@ const hashPassword = async (user) => {
   }
 };
 
-User.beforeCreate(user => {
-  if (user.isAdmin === "") {
-    user.isAdmin = false
-  } else if (user.isAdmin !== "thicc-mint-rox") {
-    throw new Error("Admin key not valid")
-  } else {
-    user.isAdmin = true
-  }
-})
-
 User.beforeCreate(hashPassword);
 User.beforeUpdate(hashPassword);
 User.beforeBulkCreate((users) => Promise.all(users.map(hashPassword)));
