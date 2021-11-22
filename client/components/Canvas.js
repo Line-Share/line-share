@@ -1,24 +1,30 @@
-import React, {useRef, useState, useEffect, useCallback} from 'react'
-import ColorWheel from './ColorWheel';
+import React, {useRef, useState, useEffect, useCallback} from 'react';
+import { AlphaPicker, CompactPicker, HuePicker, PhotoshopPicker, SketchPicker, SliderPicker } from 'react-color';
 
-const colors = [
-    "black",
-    "red",
-    "blue",
-    "green",
-    "yellow",
-    "orange",
-    "brown",
-    "pink",
-    "purple"
-]
+// const colors = [
+//     "black",
+//     "red",
+//     "blue",
+//     "green",
+//     "yellow",
+//     "orange",
+//     "brown",
+//     "pink",
+//     "purple",
+//     "magenta",
+//     "maroon",
+//     "cyan",
+//     "turquoise",
+//     "indigo",
+//     "gray"
+// ]
 
 const widths = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
 
-const Canvas = () =>{
+const Canvas = () =>{ 
     const canvasRef = useRef(null);
     const ctx = useRef(null);
-    const [selectedColor, setSelectedColor] = useState(colors[0]);
+    const [selectedColor, setSelectedColor] = useState('#ff0000');
     const [selectedWidth, setSelectedWidth] = useState(widths[0]);
     const [mouseDown, setMouseDown] = useState(false);
     const [lastPosition, setPosition] = useState({
@@ -59,7 +65,7 @@ const Canvas = () =>{
     {
         setPosition({
             x: e.pageX,
-            y: e.PageY
+            y: e.pageY
         })
         setMouseDown(true);
     }
@@ -78,6 +84,9 @@ const Canvas = () =>{
     const clear = () => {
         ctx.current.clearRect(0,0, ctx.current.canvas.width, ctx.current.canvas.height);
     }
+    const eraser = () => (
+        setSelectedColor("white")
+    )
 
 
     return  (
@@ -96,14 +105,14 @@ const Canvas = () =>{
         />
         <br/>
 
-        <select
+        {/* <select
         value = {selectedColor}
         onChange = {(e) =>
         setSelectedColor(e.target.value)}>
         {colors.map(
             (color) => <option key={color} value ={color}>{color}</option>
         )}
-        </select>
+        </select> */}
 
         <select
         value = {selectedWidth}
@@ -114,9 +123,18 @@ const Canvas = () =>{
         )}
         </select>
 
-
+        <button onClick = {eraser}>Eraser</button>
         <button onClick = {clear}>Clear</button>
         <br/>
+
+        <CompactPicker
+        color = {selectedColor}
+        onChangeComplete = {(selectedColor) => {setSelectedColor(selectedColor.hex)}}
+        />
+        <SliderPicker
+        color = {selectedColor}
+        onChangeComplete = {(selectedColor) => {setSelectedColor(selectedColor.hex)}}
+        />
 
 
 
