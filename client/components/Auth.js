@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import regeneratorRuntime from 'regenerator-runtime';
 import { authenticate } from '../redux/auth'
 
 const Auth = (props) => {

@@ -40,13 +40,14 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.4.0",
+    "regenerator-runtime": "^0.13.9",
     "sequelize": "^6.9.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.16.4",
     "@babel/preset-react": "^7.12.10",
     "@babel/register": "^7.12.10",
-    "@babel/preset-env": "^7.16.4",
     "babel-loader": "^8.2.2",
     "webpack": "^5.64.1",
     "webpack-cli": "^4.9.1"
