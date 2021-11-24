@@ -6,8 +6,9 @@ a {
   text-decoration: none;
 }
 
-label {
-  display: block;
+nav{
+  align-items: center;
+  display: flex;
 }
 
 nav a {
@@ -15,11 +16,11 @@ nav a {
   margin: 1em;
 }
 
-form div {
-  margin: 1em;
-  display: inline-block;
-}
-
 .compact-picker{
   color: "ff0000";
+}
+
+#login {
+  width: 300px;
+  margin-top: 250px;
 }

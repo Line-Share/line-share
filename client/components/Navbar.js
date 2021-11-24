@@ -5,7 +5,7 @@ import { logout } from "../redux";
 
 const Navbar = ({ handleClick, isLoggedIn}) => {
   return(
-    <nav>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark justify-content-end">
       {isLoggedIn ? (
         <div>
           <Link to="/">

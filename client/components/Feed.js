@@ -4,12 +4,14 @@ import { getAllPosts } from '../redux/post'
 
 class Feed extends React.Component {
   componentDidMount() {
-    this.props.getAllPosts();
+    this.props.getPosts();
   }
 
   render(){
     return(
-
+      <div>
+        this is the feed
+      </div>
     )
   }
 }

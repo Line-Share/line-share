@@ -2,7 +2,7 @@ import React, {useRef, useState, useEffect, useCallback} from 'react';
 import { AlphaPicker, CompactPicker, HuePicker, PhotoshopPicker, SketchPicker, SliderPicker } from 'react-color';
 
 
-let prevColor; 
+let prevColor;
 const widths = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
 
 const Canvas = () =>{
@@ -18,7 +18,7 @@ const Canvas = () =>{
     const [fillStatus, setFillStatus] = useState(false);
     const [brushStatus, setBrushStatus] = useState(true);
     const [prevColor, setPrevColor] = useState('#ff0000');
-    
+
 
     useEffect(()=> {
         if (canvasRef.current){
@@ -59,8 +59,7 @@ const Canvas = () =>{
         }
     }
 
-    const onMouseUp = (e) =>
-    {
+    const onMouseUp = (e) => {
         setMouseDown(false);
     }
 
@@ -68,9 +67,8 @@ const Canvas = () =>{
 
     const onMouseMove = (e) => {
 
-        if(brushStatus === true )
-        {   draw(e.pageX, e.pageY);
-    
+        if(brushStatus === true ){
+            draw(e.pageX, e.pageY);
         }
     }
 
@@ -86,10 +84,10 @@ const Canvas = () =>{
         setBrushStatus(true);
 }
 
-    const fillCanvas = () => { 
+    const fillCanvas = () => {
         ctx.current.fillStyle = selectedColor;
         ctx.current.fillRect(9, 81, 1000, 700);
-        
+
     }
 
 
@@ -137,7 +135,7 @@ const Canvas = () =>{
         color = {selectedColor}
         onChangeComplete = {(selectedColor) => {setSelectedColor(selectedColor.hex)}}
         />
-        
+
 
 
 
