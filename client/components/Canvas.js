@@ -21,7 +21,7 @@ import { AlphaPicker, CompactPicker, HuePicker, PhotoshopPicker, SketchPicker, S
 
 const widths = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
 
-const Canvas = () =>{ 
+const Canvas = () =>{
     const canvasRef = useRef(null);
     const ctx = useRef(null);
     const [selectedColor, setSelectedColor] = useState('#ff0000');
@@ -35,7 +35,7 @@ const Canvas = () =>{
     useEffect(()=> {
         if (canvasRef.current){
             ctx.current = canvasRef.current.getContext('2d');
-            ctx.current.translate(-9, -81);
+            ctx.current.translate(-9, -137);
         }
     }, [])
 
@@ -79,7 +79,7 @@ const Canvas = () =>{
     }
 
     const clear = () => {
-        ctx.current.clearRect(9, 81, ctx.current.canvas.width, ctx.current.canvas.height);
+        ctx.current.clearRect(9, 137, ctx.current.canvas.width, ctx.current.canvas.height);
     }
     const eraser = () => (
         setSelectedColor("white")
