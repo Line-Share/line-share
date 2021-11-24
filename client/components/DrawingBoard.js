@@ -8,7 +8,7 @@ import Canvas from './Canvas';
 function DrawingBoard(){
     return(
         <div className = 'container'>
-            <Header title = 'Line Share'/>
+            <Header title = 'Sketchify'/>
             <Canvas/>
         </div>
     )
