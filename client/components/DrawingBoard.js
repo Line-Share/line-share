@@ -1,8 +1,9 @@
-import {useState, useLayoutEffect, useEffect, useRef} from 'react';
+import {useState, useEffect, useRef} from 'react';
 import React from 'react'
-import { CanvasHTMLAttributes } from 'react';
 import Header from './Header';
 import Canvas from './Canvas';
+
+
 
 function DrawingBoard(){
     return(

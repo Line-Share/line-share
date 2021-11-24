@@ -1,24 +1,8 @@
 import React, {useRef, useState, useEffect, useCallback} from 'react';
 import { AlphaPicker, CompactPicker, HuePicker, PhotoshopPicker, SketchPicker, SliderPicker } from 'react-color';
 
-// const colors = [
-//     "black",
-//     "red",
-//     "blue",
-//     "green",
-//     "yellow",
-//     "orange",
-//     "brown",
-//     "pink",
-//     "purple",
-//     "magenta",
-//     "maroon",
-//     "cyan",
-//     "turquoise",
-//     "indigo",
-//     "gray"
-// ]
 
+let prevColor; 
 const widths = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
 
 const Canvas = () =>{
@@ -31,6 +15,10 @@ const Canvas = () =>{
         x: 0,
         y: 0
     })
+    const [fillStatus, setFillStatus] = useState(false);
+    const [brushStatus, setBrushStatus] = useState(true);
+    const [prevColor, setPrevColor] = useState('#ff0000');
+    
 
     useEffect(()=> {
         if (canvasRef.current){
@@ -65,6 +53,10 @@ const Canvas = () =>{
             y: e.pageY
         })
         setMouseDown(true);
+        if(fillStatus === true) {
+            console.log('fill status is true')
+            fillCanvas();
+        }
     }
 
     const onMouseUp = (e) =>
@@ -75,15 +67,30 @@ const Canvas = () =>{
     console.log(mouseDown, lastPosition);
 
     const onMouseMove = (e) => {
-        draw(e.pageX, e.pageY);
+
+        if(brushStatus === true )
+        {   draw(e.pageX, e.pageY);
+    
+        }
     }
 
     const clear = () => {
         ctx.current.clearRect(9, 137, ctx.current.canvas.width, ctx.current.canvas.height);
     }
-    const eraser = () => (
+    const eraser = () => {
+        if(selectedColor != '0x000000'){
+            setPrevColor(selectedColor);
+        }
         setSelectedColor("white")
-    )
+        setFillStatus(false);
+        setBrushStatus(true);
+}
+
+    const fillCanvas = () => { 
+        ctx.current.fillStyle = selectedColor;
+        ctx.current.fillRect(9, 81, 1000, 700);
+        
+    }
 
 
     return  (
@@ -122,17 +129,15 @@ const Canvas = () =>{
 
         <button onClick = {eraser}>Eraser</button>
         <button onClick = {clear}>Clear</button>
+        <button onClick = {() => {setFillStatus(true), setBrushStatus(false), setSelectedColor(prevColor)}}>Fill</button>
+        <button onClick = {() => {setBrushStatus(true), setFillStatus (false), setSelectedColor(prevColor)}}>Brush</button>
         <br/>
 
-        <CompactPicker
+        <SketchPicker
         color = {selectedColor}
         onChangeComplete = {(selectedColor) => {setSelectedColor(selectedColor.hex)}}
         />
-        <SliderPicker
-        color = {selectedColor}
-        onChangeComplete = {(selectedColor) => {setSelectedColor(selectedColor.hex)}}
-        />
-
+        
 
 
 
