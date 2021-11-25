@@ -38,6 +38,10 @@ p {
 .compact-picker{
   color: "ff0000";
 }
+.form-select {
+  width: 58px;
+  margin-right: 0 !important;
+}
 
 #bg {
   position: fixed;
@@ -59,8 +63,22 @@ p {
   margin-top: 250px;
 }
 
+#canvas-container {
+  margin-left: 0;
+  padding-left: 0 !important;
+}
+
+#c-container{
+  padding-left: 0;
+}
+#myCanvas {
+  padding-left: 0;
+}
 #controls {
   position: fixed;
   top: 72px;
-  left: 70%;
+  left: 1005px;;
+}
+#button-controls {
+  width: 420px;
 }

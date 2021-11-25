@@ -117,9 +117,10 @@ const Canvas = () =>{
 
 
     return  (
-    <div>
+    <div id="c-container">
 
         <canvas
+        className="col"
         id = 'myCanvas'
         style = {{border: '2px solid #000'}}
         width = '1000%'
@@ -146,20 +147,21 @@ const Canvas = () =>{
             color = {selectedColor}
             onChangeComplete = {(selectedColor) => {setSelectedColor(selectedColor.hex)}}
             />
-            <select
-            value = {selectedWidth}
-            onChange = {(e) =>
-            setSelectedWidth(e.target.value)}>
-            {widths.map(
-                (width) => <option key={width} value ={width}>{width}</option>
-            )}
-            </select>
-
-            <button onClick = {eraser}><FontAwesomeIcon icon= {faEraser} /></button>
-            <button onClick = {() => {setFillStatus(true), setBrushStatus(false), setSelectedColor(prevColor)}}><FontAwesomeIcon icon= {faFillDrip} /></button>
-            <button onClick = {() => {setBrushStatus(true), setFillStatus (false), setSelectedColor(prevColor)}}><FontAwesomeIcon icon= {faPaintBrush} /></button>
-            <button onClick = {undoDraw}><FontAwesomeIcon icon= {faRotateLeft} /></button>
-            <button onClick = {clear}>Clear</button>
+            <div className="btn-group" role="controls" id="button-controls">
+                <select className="form-select btn btn-light border border-dark"
+                value = {selectedWidth}
+                onChange = {(e) =>
+                setSelectedWidth(e.target.value)}>
+                {widths.map(
+                    (width) => <option key={width} value ={width}>{width}</option>
+                )}
+                </select>
+                <button className="btn btn-light btn-light border border-dark" onClick = {() => {setBrushStatus(true), setFillStatus (false), setSelectedColor(prevColor)}}><FontAwesomeIcon icon= {faPaintBrush} /></button>
+                <button className="btn btn-light btn-light border border-dark" onClick = {() => {setFillStatus(true), setBrushStatus(false), setSelectedColor(prevColor)}}><FontAwesomeIcon icon= {faFillDrip} /></button>
+                <button className="btn btn-light border border-dark" onClick = {eraser}><FontAwesomeIcon icon= {faEraser} /></button>
+                <button className="btn btn-light btn-light border border-dark" onClick = {undoDraw}><FontAwesomeIcon icon= {faRotateLeft} /></button>
+                <button className="btn btn-dark" onClick = {clear}>Clear</button>
+            </div>
             <br/>
         </div>
     </div>

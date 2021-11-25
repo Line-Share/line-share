@@ -12,7 +12,7 @@ const Navbar = ({ handleClick, isLoggedIn}) => {
       <div className="justify-content-end">
         {isLoggedIn ? (
           <div>
-            <Link to="/">
+            <Link to="/feed">
               Home
             </Link>
             <Link to="/drawing">
