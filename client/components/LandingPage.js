@@ -12,7 +12,7 @@ const LandingPage = () =>{
     <div>Save,</div>
     <div>Share.</div>
   </h1>
-  <p>
+  <p id = "LandingPageMainBlurb">
     <div>
     Sketchify is different from other canvas applications in the fact that it provides the user 
     </div>
@@ -37,6 +37,8 @@ const LandingPage = () =>{
       Users can choose from a plethora of color options and due to the color slider and the color graph they can do so with ease. The features don't stop there as 
       they also have the option to erase, undo, change brush stroke sizes, and clear the canvas.
     </p>
+
+    <img src = "https://scontent.xx.fbcdn.net/v/t1.15752-9/p403x403/260625010_223154939932411_5112368953279855126_n.png?_nc_cat=103&ccb=1-5&_nc_sid=aee45a&_nc_ohc=WnKIbxg_pRIAX-M8ZG_&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=e47ad33627d13d36f23c1a675406dca5&oe=61C49032" id = "lg3" width = {720} height = {395.5}/>
 
 
   </div> 

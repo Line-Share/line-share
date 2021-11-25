@@ -1,6 +1,7 @@
 body {
   font-family: sans-serif;
   background-color: whitesmoke;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 a {
@@ -25,20 +26,30 @@ a {
   color:whitesmoke;
 }
 
-h5 {
-  color: whitesmoke;
-}
 .sketch-picker {
   width: 400px !important;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 137b4ee71be2438a8df49b199379ef75acdfaeae
 .compact-picker{
   color: "ff0000";
 }
+
 .form-select {
   width: 58px;
   margin-right: 0 !important;
+}
+
+.card {
+  width: 500px;
+  margin-top: 40px;
+}
+
+#post-container {
+  column-gap: 200px;
 }
 
 #bg {
@@ -52,6 +63,7 @@ h5 {
 }
 
 #title {
+  font-family: 'Finger Paint', cursive;
   margin-left: 10px;
   color: whitesmoke;
 }
@@ -69,22 +81,25 @@ h5 {
 #c-container{
   padding-left: 0;
 }
+
 #myCanvas {
   padding-left: 0;
 }
+
 #controls {
   position: fixed;
   top: 72px;
   left: 1005px;;
 }
+
 #button-controls {
   width: 420px;
 }
 
 #LandingPageMain{
   text-align: center;
-  margin-top: 200px;
-  margin-bottom: 235px;
+  margin-top: 95px;
+  margin-bottom: 150px;
 
 }
 
@@ -104,4 +119,28 @@ h5 {
   max-width: 100%;
   z-index: -1;
   opacity: 25%;
+}
+
+#LandingPageMainHeading{
+  font-size: 90px;
+  color:azure;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+
+}
+
+#LandingPageMainBlurb{
+  font-size: 20px;
+  color:azure;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+
+}
+
+#lg3{
+  border: black;
+  border-style: solid;
+
+}
+a#title.me-auto {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }

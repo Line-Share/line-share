@@ -20,7 +20,7 @@ class WebRoutes extends React.Component {
           <Switch>
             <Route path = "/drawing" component={DrawingBoard } />
             <Route path = "/feed" component={Feed} />
-            {/* <Redirect to = "/feed" /> */}
+            <Redirect to = "/feed" />
           </Switch> ) :
           (
             <Switch>
