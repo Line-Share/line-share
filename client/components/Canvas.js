@@ -151,14 +151,6 @@ const Canvas = ({ userInfo, createNewPost, clearPosts }) => {
         />
         <br/>
 
-        {/* <select
-        value = {selectedColor}
-        onChange = {(e) =>
-        setSelectedColor(e.target.value)}>
-        {colors.map(
-            (color) => <option key={color} value ={color}>{color}</option>
-        )}
-        </select> */}
         <div id="controls">
 
             <SketchPicker
@@ -174,6 +166,9 @@ const Canvas = ({ userInfo, createNewPost, clearPosts }) => {
                     (width) => <option key={width} value ={width}>{width}</option>
                 )}
                 </select>
+
+
+               
                 <button className="btn btn-light btn-light border border-dark" onClick = {() => {setBrushStatus(true), setFillStatus (false), setSelectedColor(prevColor)}}><FontAwesomeIcon icon= {faPaintBrush} /></button>
                 <button className="btn btn-light btn-light border border-dark" onClick = {() => {setFillStatus(true), setBrushStatus(false), setSelectedColor(prevColor)}}><FontAwesomeIcon icon= {faFillDrip} /></button>
                 <button className="btn btn-light border border-dark" onClick = {eraser}><FontAwesomeIcon icon= {faEraser} /></button>

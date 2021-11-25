@@ -36,10 +36,12 @@
     "path": "^0.12.7",
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
+    "rangeslider.js": "^2.3.3",
     "rc-slider": "^9.7.4",
     "react": "^17.0.2",
     "react-color": "^2.19.3",
     "react-dom": "^17.0.2",
+    "react-range": "^1.8.11",
     "react-redux": "^7.2.6",
     "react-router-dom": "^5.0.0",
     "react-sketch-canvas": "^6.1.0",
@@ -48,7 +50,8 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.4.0",
     "regenerator-runtime": "^0.13.9",
-    "sequelize": "^6.9.0"
+    "sequelize": "^6.9.0",
+    "styled-components": "^5.3.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",

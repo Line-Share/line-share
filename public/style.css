@@ -30,6 +30,10 @@ a {
   width: 400px !important;
 }
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 137b4ee71be2438a8df49b199379ef75acdfaeae
 .compact-picker{
   color: "ff0000";
 }
@@ -92,6 +96,50 @@ a {
   width: 420px;
 }
 
+#LandingPageMain{
+  text-align: center;
+  margin-top: 95px;
+  margin-bottom: 150px;
+
+}
+
+#lg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  max-width: 100%;
+  z-index: -1;
+  /* opacity: 25%; */
+}
+
+#lg2{
+  position: absolute;
+  min-width: 100%;
+  max-width: 100%;
+  z-index: -1;
+  opacity: 25%;
+}
+
+#LandingPageMainHeading{
+  font-size: 90px;
+  color:azure;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+
+}
+
+#LandingPageMainBlurb{
+  font-size: 20px;
+  color:azure;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+
+}
+
+#lg3{
+  border: black;
+  border-style: solid;
+
+}
 a#title.me-auto {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
