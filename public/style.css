@@ -1,13 +1,20 @@
 body {
   font-family: sans-serif;
+  background-color: whitesmoke;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 a {
   text-decoration: none;
 }
 
-label {
-  display: block;
+canvas {
+  background-color: white;
+}
+
+nav{
+  align-items: center;
+  display: flex;
 }
 
 nav a {
@@ -15,11 +22,125 @@ nav a {
   margin: 1em;
 }
 
-form div {
-  margin: 1em;
-  display: inline-block;
+a {
+  color:whitesmoke;
 }
 
+.sketch-picker {
+  width: 400px !important;
+}
+
+<<<<<<< HEAD
+
+=======
+>>>>>>> 137b4ee71be2438a8df49b199379ef75acdfaeae
 .compact-picker{
   color: "ff0000";
+}
+
+.form-select {
+  width: 58px;
+  margin-right: 0 !important;
+}
+
+.card {
+  width: 500px;
+  margin-top: 40px;
+}
+
+#post-container {
+  column-gap: 200px;
+}
+
+#bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  max-width: 100%;
+  z-index: -1;
+  opacity: 25%;
+}
+
+#title {
+  font-family: 'Finger Paint', cursive;
+  margin-left: 10px;
+  color: whitesmoke;
+}
+
+#login {
+  width: 300px;
+  margin-top: 250px;
+}
+
+#canvas-container {
+  margin-left: 0;
+  padding-left: 0 !important;
+}
+
+#c-container{
+  padding-left: 0;
+}
+
+#myCanvas {
+  padding-left: 0;
+}
+
+#controls {
+  position: fixed;
+  top: 72px;
+  left: 1005px;;
+}
+
+#button-controls {
+  width: 420px;
+}
+
+#LandingPageMain{
+  text-align: center;
+  margin-top: 95px;
+  margin-bottom: 150px;
+
+}
+
+#lg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  max-width: 100%;
+  z-index: -1;
+  /* opacity: 25%; */
+}
+
+#lg2{
+  position: absolute;
+  min-width: 100%;
+  max-width: 100%;
+  z-index: -1;
+  opacity: 25%;
+}
+
+#LandingPageMainHeading{
+  font-size: 90px;
+  color:azure;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+
+}
+
+#LandingPageMainBlurb{
+  font-size: 20px;
+  color:azure;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+
+}
+
+#lg3{
+  border: black;
+  border-style: solid;
+
+}
+a#title.me-auto {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }

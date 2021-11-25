@@ -1,28 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { authenticate } from '../redux/auth'
+import regeneratorRuntime from 'regenerator-runtime';
+import { authenticate } from '../redux'
 
 const Auth = (props) => {
   const {name, displayName, handleSubmit, error} = props;
 
   return(
-    <div>
+    <div className="container" id="login">
+      <img src="https://www.miltonandking.com/au/wp-content/uploads/sites/2/2018/12/Wallpaper-Republic-Tipografia-1-4.jpg" id="bg" />
       <form onSubmit={handleSubmit} name={name}>
-        <div>
-          <label htmlFor="username">
+        <div className="mb-3">
+          <label htmlFor="username" className="form-label h3">
             <small>Username</small>
           </label>
-          <input name="username" type="text" />
-        </div>
-        <div>
-          <label htmlFor="password">
+          <input name="username" type="text" className="form-control"/>
+          <label htmlFor="password" className="form-label h3">
             <small>Password</small>
           </label>
-          <input name="password" type="password" />
+          <input name="password" type="password" className="form-control"/>
         </div>
-        <div>
-          <button type="submit">{displayName}</button>
-        </div>
+        <button type="submit" className="btn btn-primary">{displayName}</button>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
     </div>
