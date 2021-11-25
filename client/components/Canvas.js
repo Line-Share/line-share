@@ -8,6 +8,7 @@ let undo_array = [];
 let undo_index = -1;
 const widths = [1, 10, 15, 30, 40, 50, 75, 100, 150, 200]
 
+
 const Canvas = () =>{
     const canvasRef = useRef(null);
     const ctx = useRef(null);
@@ -133,14 +134,6 @@ const Canvas = () =>{
         />
         <br/>
 
-        {/* <select
-        value = {selectedColor}
-        onChange = {(e) =>
-        setSelectedColor(e.target.value)}>
-        {colors.map(
-            (color) => <option key={color} value ={color}>{color}</option>
-        )}
-        </select> */}
         <div id="controls">
 
             <SketchPicker
@@ -156,6 +149,9 @@ const Canvas = () =>{
                     (width) => <option key={width} value ={width}>{width}</option>
                 )}
                 </select>
+
+
+               
                 <button className="btn btn-light btn-light border border-dark" onClick = {() => {setBrushStatus(true), setFillStatus (false), setSelectedColor(prevColor)}}><FontAwesomeIcon icon= {faPaintBrush} /></button>
                 <button className="btn btn-light btn-light border border-dark" onClick = {() => {setFillStatus(true), setBrushStatus(false), setSelectedColor(prevColor)}}><FontAwesomeIcon icon= {faFillDrip} /></button>
                 <button className="btn btn-light border border-dark" onClick = {eraser}><FontAwesomeIcon icon= {faEraser} /></button>

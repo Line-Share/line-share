@@ -5,7 +5,7 @@ import { logout } from "../redux";
 
 const Navbar = ({ handleClick, isLoggedIn}) => {
   return(
-    <nav className="navbar navbar-expand-lg navbar-dark bg-danger">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-danger sticky-top">
       <div id="title" className="me-auto">
         <h1>Sketchify</h1>
       </div>
