@@ -52,6 +52,8 @@ const LandingPage = () =>{
      across the world inspired me to enroll in a 17-week immersive coding boot camp over my Summer break. After graduating from Fullstack Academy, 
      I have been continuing my degree program, as well as searching for internships and jobs at companies that focus on technologies that connect 
      people.</p>
+     <a className = "refLinks" href = "https://github.com/michaelorman61">GitHub</a>
+     <a className = "refLinks" href = "https://www.linkedin.com/in/michaelorman61/">LinkedIn</a>
 
     <h2 className = "ourNames">Syed Ali</h2>
     <h3 className = "ourOccu">Software Engineer</h3>
@@ -62,6 +64,8 @@ const LandingPage = () =>{
      more difficult than that in Sketchify. Although the road to this result was riddled with adversity, I am glad to have been part of this hackathon and am satisfied 
      with the progress I’ve made as a programmer. Please feel free to connect with me on LinkedIn and take a look at my GitHub!
 </p>
+       <a className = "refLinks" href = "https://github.com/syedcito">GitHub</a>
+       <a className = "refLinks" href = "https://www.linkedin.com/in/syed-ali-15a8b81bb/">LinkedIn</a>
 
 
   </div> 
