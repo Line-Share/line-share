@@ -75,11 +75,6 @@ const LandingPage = () =>{
 
 
   </div>
-
-
-
-
-
     )
 }
 
