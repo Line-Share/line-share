@@ -3,7 +3,8 @@ import {SketchPicker} from 'react-color';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faPaintBrush, faEraser, faRotateLeft, faFillDrip} from '@fortawesome/free-solid-svg-icons';
 import { connect } from 'react-redux'
-import { createPost } from '../redux/post'
+import { createPost, _getAllPosts } from '../redux/post'
+import { withRouter } from 'react-router-dom';
 
 const translateX = 5;
 const translateY = 72;
@@ -12,7 +13,7 @@ let undo_array = [];
 let undo_index = -1;
 const widths = [1, 10, 15, 30, 40, 50, 75, 100, 150, 200]
 
-const Canvas = ({ userInfo, createNewPost, history }) => {
+const Canvas = ({ userInfo, createNewPost, clearPosts }) => {
     const canvasRef = useRef(null);
     const ctx = useRef(null);
     const [selectedColor, setSelectedColor] = useState('#ff0000');
@@ -32,6 +33,9 @@ const Canvas = ({ userInfo, createNewPost, history }) => {
         if (canvasRef.current){
             ctx.current = canvasRef.current.getContext('2d');
             ctx.current.translate(translateX, -translateY);
+        }
+        return function cleanup() {
+            clearPosts()
         }
     }, [])
 
@@ -104,7 +108,7 @@ const Canvas = ({ userInfo, createNewPost, history }) => {
 
     const fillCanvas = () => {
         ctx.current.fillStyle = selectedColor;
-        ctx.current.fillRect(translateX, translateY, 1000, 700);
+        ctx.current.fillRect(-translateX, translateY, 1000, 700);
 
     }
 
@@ -200,9 +204,12 @@ const mapDispatch = (dispatch, { history }) => {
     return{
         createNewPost: (post) => {
             dispatch(createPost(post, history))
+        },
+        clearPosts: () => {
+            dispatch(_getAllPosts([]))
         }
     }
 }
 
-export default connect(mapState, mapDispatch)(Canvas);
+export default withRouter(connect(mapState, mapDispatch)(Canvas));
 

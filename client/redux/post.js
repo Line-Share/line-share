@@ -6,7 +6,7 @@ const CREATE_POST = 'CREATE_POST';
 
 
 // Action Creators
-const _getAllPosts = (posts) => {
+export const _getAllPosts = (posts) => {
   return {
     type: GET_ALL_POSTS,
     posts
@@ -44,6 +44,8 @@ export const createPost = (post, history) => {
     }
   }
 }
+
+
 
 export default function(state = [], action) {
   switch (action.type){

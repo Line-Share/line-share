@@ -1,19 +1,21 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { getAllPosts } from '../redux/post'
+import { getAllPosts, _getAllPosts } from '../redux/post'
+import regeneratorRuntime from 'regenerator-runtime';
 
 class Feed extends React.Component {
-  componentDidMount() {
-    this.props.getPosts();
+  async componentDidMount() {
+    await this.props.getPosts();
   }
 
+  async componentWillUnmount() {
+    await this.props.clearPosts();
+  }
   render(){
-    if(!this.props.allPosts){
-      return <div>loading</div>
-    }
-    else{
-      return(
-        <React.Fragment>
+
+      return (
+        this.props.allPosts.length ?
+        (<React.Fragment>
           <img src="https://www.miltonandking.com/au/wp-content/uploads/sites/2/2018/12/Wallpaper-Republic-Tipografia-1-4.jpg" id="bg" />
           <div className="container-fluid col" id="post-container">
             {this.props.allPosts.map((post) => {
@@ -26,9 +28,10 @@ class Feed extends React.Component {
               )
             })}
           </div>
-        </React.Fragment>
+        </React.Fragment>) : (
+          <div> loading </div>
+        )
       )
-    }
   }
 }
 
@@ -42,6 +45,9 @@ const mapDispatch = dispatch => {
   return {
     getPosts() {
       dispatch(getAllPosts())
+    },
+    clearPosts(){
+      dispatch(_getAllPosts([]))
     }
   }
 }

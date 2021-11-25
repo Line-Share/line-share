@@ -5,6 +5,7 @@ import DrawingBoard  from './components/DrawingBoard'
 import LandingPage  from './components/LandingPage'
 import Feed from './components/Feed'
 import { Login, Signup } from './components/Auth'
+import Profile from './components/Profile'
 import { me } from './redux'
 
 class WebRoutes extends React.Component {
@@ -18,8 +19,10 @@ class WebRoutes extends React.Component {
       <div>
         {isLoggedIn ? (
           <Switch>
+            <Route exact path = "/" component={LandingPage} />
             <Route path = "/drawing" component={DrawingBoard } />
             <Route path = "/feed" component={Feed} />
+            <Route path = "/:userId" component={Profile} />
             <Redirect to = "/feed" />
           </Switch> ) :
           (
@@ -27,7 +30,7 @@ class WebRoutes extends React.Component {
               <Route exact path = '/' component={LandingPage } />
               <Route path = "/login" component={Login} />
               <Route path = "/signup" component={Signup} />
-              {/* <Redirect to="/" /> */}
+              <Redirect to="/" />
             </Switch>
           )
         }
