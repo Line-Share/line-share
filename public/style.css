@@ -30,10 +30,6 @@ a {
   width: 400px !important;
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 137b4ee71be2438a8df49b199379ef75acdfaeae
 .compact-picker{
   color: "ff0000";
 }
@@ -46,6 +42,11 @@ a {
 .card {
   width: 500px;
   margin-top: 40px;
+}
+
+.landing-page-btns {
+  column-gap: 50px;
+  width: 200px;
 }
 
 #post-container {
@@ -142,7 +143,7 @@ a {
 }
 
 .refLinks{
-  color:black;
+  color: blue;
 }
 a#title.me-auto {
   margin-top: 0 !important;
