@@ -1,9 +1,10 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: github_username, repo_name, twitter_handle, linkedin_username, email, email_client, project_title, project_description
+Sketchify is an interactive web based drawing app that gives users a wide array of functions that will allow them to make the things of their desire. Users can choose from a plethora of color options and due to the color slider and the color graph they can do so with ease. The features don't stop there as they also have the option to erase, undo, change brush stroke sizes, and clear the canvas. The main grab with Sketchify is the fact that you can share your work for others to see. This pushes Sketchify beyond the realm of canvas and drawing applications and goes into social media territory.
+
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
