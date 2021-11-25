@@ -1,6 +1,7 @@
 body {
   font-family: sans-serif;
   background-color: whitesmoke;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 a {
@@ -25,22 +26,26 @@ a {
   color:whitesmoke;
 }
 
-h5 {
-  color: whitesmoke;
-}
 .sketch-picker {
   width: 400px !important;
 }
 
-p {
-  color: whitesmoke;
-}
 .compact-picker{
   color: "ff0000";
 }
+
 .form-select {
   width: 58px;
   margin-right: 0 !important;
+}
+
+.card {
+  width: 500px;
+  margin-top: 40px;
+}
+
+#post-container {
+  column-gap: 200px;
 }
 
 #bg {
@@ -54,6 +59,7 @@ p {
 }
 
 #title {
+  font-family: 'Finger Paint', cursive;
   margin-left: 10px;
   color: whitesmoke;
 }
@@ -71,14 +77,22 @@ p {
 #c-container{
   padding-left: 0;
 }
+
 #myCanvas {
   padding-left: 0;
 }
+
 #controls {
   position: fixed;
   top: 72px;
   left: 1005px;;
 }
+
 #button-controls {
   width: 420px;
+}
+
+a#title.me-auto {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }

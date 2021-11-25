@@ -2,13 +2,17 @@ import React, {useRef, useState, useEffect, useCallback} from 'react';
 import {SketchPicker} from 'react-color';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faPaintBrush, faEraser, faRotateLeft, faFillDrip} from '@fortawesome/free-solid-svg-icons';
+import { connect } from 'react-redux'
+import { createPost } from '../redux/post'
 
+const translateX = 5;
+const translateY = 72;
 
 let undo_array = [];
 let undo_index = -1;
 const widths = [1, 10, 15, 30, 40, 50, 75, 100, 150, 200]
 
-const Canvas = () =>{
+const Canvas = ({ userInfo, createNewPost, history }) => {
     const canvasRef = useRef(null);
     const ctx = useRef(null);
     const [selectedColor, setSelectedColor] = useState('#ff0000');
@@ -21,12 +25,13 @@ const Canvas = () =>{
     const [fillStatus, setFillStatus] = useState(false);
     const [brushStatus, setBrushStatus] = useState(true);
     const [prevColor, setPrevColor] = useState('#ff0000');
+    const [caption, setCaption] = useState('');
 
 
     useEffect(()=> {
         if (canvasRef.current){
             ctx.current = canvasRef.current.getContext('2d');
-            ctx.current.translate(-9, -137);
+            ctx.current.translate(translateX, -translateY);
         }
     }, [])
 
@@ -84,7 +89,7 @@ const Canvas = () =>{
     }
 
     const clear = () => {
-        ctx.current.clearRect(9, 137, ctx.current.canvas.width, ctx.current.canvas.height);
+        ctx.current.clearRect(-translateX, translateY, ctx.current.canvas.width, ctx.current.canvas.height);
         undo_array = [];
         undo_index = -1;
     }
@@ -99,7 +104,7 @@ const Canvas = () =>{
 
     const fillCanvas = () => {
         ctx.current.fillStyle = selectedColor;
-        ctx.current.fillRect(9, 81, 1000, 700);
+        ctx.current.fillRect(translateX, translateY, 1000, 700);
 
     }
 
@@ -115,6 +120,15 @@ const Canvas = () =>{
         }
     }
 
+    const createImageUrl = () => {
+        const url = canvasRef.current.toDataURL();
+        return(url);
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(userInfo)
+        createNewPost({imageUrl: createImageUrl(), caption: caption, userInfo: userInfo})
+    }
 
     return  (
     <div id="c-container">
@@ -163,11 +177,32 @@ const Canvas = () =>{
                 <button className="btn btn-dark" onClick = {clear}>Clear</button>
             </div>
             <br/>
+            <form id="post-form" onSubmit={handleSubmit}>
+                <div className="mb-3">
+                    <label htmlFor="caption" className="form-label h2">Caption</label>
+                    <input name="caption" className="form-control" onChange={(e) => {setCaption(e.target.value)}} value={caption} />
+                </div>
+                <button type="submit" className="btn btn-info border border-dark">Post</button>
+            </form>
         </div>
     </div>
 )
 
 }
 
-export default Canvas;
+const mapState = state => {
+    return {
+        userInfo: state.auth
+    }
+}
+
+const mapDispatch = (dispatch, { history }) => {
+    return{
+        createNewPost: (post) => {
+            dispatch(createPost(post, history))
+        }
+    }
+}
+
+export default connect(mapState, mapDispatch)(Canvas);
 
