@@ -8,6 +8,7 @@ const Auth = (props) => {
 
   return(
     <div className="container" id="login">
+      <img src="https://www.miltonandking.com/au/wp-content/uploads/sites/2/2018/12/Wallpaper-Republic-Tipografia-1-4.jpg" id="bg" />
       <form onSubmit={handleSubmit} name={name}>
         <div className="mb-3">
           <label htmlFor="username" className="form-label h3">

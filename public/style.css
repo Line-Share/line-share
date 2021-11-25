@@ -1,9 +1,14 @@
 body {
   font-family: sans-serif;
+  background-color: whitesmoke;
 }
 
 a {
   text-decoration: none;
+}
+
+canvas {
+  background-color: white;
 }
 
 nav{
@@ -16,11 +21,46 @@ nav a {
   margin: 1em;
 }
 
+a {
+  color:whitesmoke;
+}
+
+h5 {
+  color: whitesmoke;
+}
+.sketch-picker {
+  width: 400px !important;
+}
+
+p {
+  color: whitesmoke;
+}
 .compact-picker{
   color: "ff0000";
+}
+
+#bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  max-width: 100%;
+  z-index: -1;
+  opacity: 25%;
+}
+
+#title {
+  margin-left: 10px;
+  color: whitesmoke;
 }
 
 #login {
   width: 300px;
   margin-top: 250px;
+}
+
+#controls {
+  position: fixed;
+  top: 72px;
+  left: 70%;
 }

@@ -9,16 +9,25 @@ class Feed extends React.Component {
 
   render(){
     return(
-      <div>
-        this is the feed
-      </div>
+      <React.Fragment>
+        <img src="https://www.miltonandking.com/au/wp-content/uploads/sites/2/2018/12/Wallpaper-Republic-Tipografia-1-4.jpg" id="bg" />
+        {this.props.allPosts.map((post) => {
+          return(
+            <div key={post.postId} className="card bg-dark" style={{width: 13 + 'em'}}>
+              <img src={post.imageUrl} className="card-img-top" />
+              <h5 className="card-title">{post.userId}</h5>
+              <p className="card-text">{post.caption}</p>
+            </div>
+          )
+        })}
+      </React.Fragment>
     )
   }
 }
 
 const mapState = state => {
   return {
-    allPosts: state.posts
+    allPosts: state.post
   }
 }
 

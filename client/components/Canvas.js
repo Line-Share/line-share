@@ -1,9 +1,12 @@
 import React, {useRef, useState, useEffect, useCallback} from 'react';
-import { AlphaPicker, CompactPicker, HuePicker, PhotoshopPicker, SketchPicker, SliderPicker } from 'react-color';
+import {SketchPicker} from 'react-color';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faPaintBrush, faEraser, faRotateLeft, faFillDrip} from '@fortawesome/free-solid-svg-icons';
 
 
-let prevColor;
-const widths = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
+let undo_array = [];
+let undo_index = -1;
+const widths = [1, 10, 15, 30, 40, 50, 75, 100, 150, 200]
 
 const Canvas = () =>{
     const canvasRef = useRef(null);
@@ -61,6 +64,14 @@ const Canvas = () =>{
 
     const onMouseUp = (e) => {
         setMouseDown(false);
+        undo_array.push(ctx.current.getImageData(0, 0, 1000, 700));
+        undo_index += 1;
+        console.log(undo_array[undo_index]);
+    }
+
+    const onMouseLeave = (e) =>
+    {
+        setMouseDown(false);
     }
 
     console.log(mouseDown, lastPosition);
@@ -74,6 +85,8 @@ const Canvas = () =>{
 
     const clear = () => {
         ctx.current.clearRect(9, 137, ctx.current.canvas.width, ctx.current.canvas.height);
+        undo_array = [];
+        undo_index = -1;
     }
     const eraser = () => {
         if(selectedColor != '0x000000'){
@@ -90,6 +103,18 @@ const Canvas = () =>{
 
     }
 
+    const undoDraw = () =>{
+        if(undo_index <= 0){
+            clear();
+            undo_array.pop();
+        }
+        else{
+            undo_index -= 1;
+            undo_array.pop();
+            ctx.current.putImageData(undo_array[undo_index], 0, 0);
+        }
+    }
+
 
     return  (
     <div>
@@ -102,7 +127,7 @@ const Canvas = () =>{
         ref = {canvasRef}
         onMouseDown = {onMouseDown}
         onMouseUp = {onMouseUp}
-        onMouseLeave = {onMouseUp}
+        onMouseLeave = {onMouseLeave}
         onMouseMove = {onMouseMove}
         />
         <br/>
@@ -115,30 +140,28 @@ const Canvas = () =>{
             (color) => <option key={color} value ={color}>{color}</option>
         )}
         </select> */}
+        <div id="controls">
 
-        <select
-        value = {selectedWidth}
-        onChange = {(e) =>
-        setSelectedWidth(e.target.value)}>
-        {widths.map(
-            (width) => <option key={width} value ={width}>{width}</option>
-        )}
-        </select>
+            <SketchPicker
+            color = {selectedColor}
+            onChangeComplete = {(selectedColor) => {setSelectedColor(selectedColor.hex)}}
+            />
+            <select
+            value = {selectedWidth}
+            onChange = {(e) =>
+            setSelectedWidth(e.target.value)}>
+            {widths.map(
+                (width) => <option key={width} value ={width}>{width}</option>
+            )}
+            </select>
 
-        <button onClick = {eraser}>Eraser</button>
-        <button onClick = {clear}>Clear</button>
-        <button onClick = {() => {setFillStatus(true), setBrushStatus(false), setSelectedColor(prevColor)}}>Fill</button>
-        <button onClick = {() => {setBrushStatus(true), setFillStatus (false), setSelectedColor(prevColor)}}>Brush</button>
-        <br/>
-
-        <SketchPicker
-        color = {selectedColor}
-        onChangeComplete = {(selectedColor) => {setSelectedColor(selectedColor.hex)}}
-        />
-
-
-
-
+            <button onClick = {eraser}><FontAwesomeIcon icon= {faEraser} /></button>
+            <button onClick = {() => {setFillStatus(true), setBrushStatus(false), setSelectedColor(prevColor)}}><FontAwesomeIcon icon= {faFillDrip} /></button>
+            <button onClick = {() => {setBrushStatus(true), setFillStatus (false), setSelectedColor(prevColor)}}><FontAwesomeIcon icon= {faPaintBrush} /></button>
+            <button onClick = {undoDraw}><FontAwesomeIcon icon= {faRotateLeft} /></button>
+            <button onClick = {clear}>Clear</button>
+            <br/>
+        </div>
     </div>
 )
 
